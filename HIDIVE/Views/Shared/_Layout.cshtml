@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <!-- Bootstrap -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--Slick slider-->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" />
+    <!-- Custom Theme Style -->
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    @*@Styles.Render("~/Content/css")*@
+
+    @RenderSection("css", required: false)
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9 col-sm-9">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a id="hdLogo" href="/" title="HIDIVE">
+                                <img src="//d10xkldqejj5hr.cloudfront.net/content/images/HIDIVE_logo.svg" alt="HIDIVE" class="img-responsive" style="height:35px;max-width:none !important; padding-top: 10px;" />
+                            </a>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li>@Html.ActionLink("Simulcasts", "Index2", "Home")</li>
+                                <li>@Html.ActionLink("Dubs", "", "")</li>
+                                <li>@Html.ActionLink("Series", "", "")</li>
+                                <li>@Html.ActionLink("Movies", "", "")</li>
+                                <li>@Html.ActionLink("Schedule", "", "")</li>
+                                <li>@Html.ActionLink("Shop", "", "")</li>
+                                <li>@Html.ActionLink("News", "", "")</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 ">
+                        <div class="text-right">
+                            <ul class="nav navbar-nav list-inline" style="float:right;">
+                                <li>
+                                    <a href="#">
+                                        <span class="fa fa-search" style="font-size:2em;"></span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#">
+                                        <span class="fa fa-user" style="font-size:2em;" title="My Account"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>*@
+    
+    <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/" title="HIDIVE">
+                        <img src="//d10xkldqejj5hr.cloudfront.net/content/images/HIDIVE_logo.svg" alt="HIDIVE" class="img-responsive" style="height:35px;max-width:none !important; padding-top: 10px;" />
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Simulcasts", "Index2", "Home")</li>
+                        <li>@Html.ActionLink("Dubs", "", "")</li>
+                        <li>@Html.ActionLink("Series", "", "")</li>
+                        <li>@Html.ActionLink("Movies", "", "")</li>
+                        <li>@Html.ActionLink("Schedule", "", "")</li>
+                        <li>@Html.ActionLink("Shop", "", "")</li>
+                        <li>@Html.ActionLink("News", "", "")</li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="fa fa-search" style="font-size:2em;"></span></a></li>
+                        <li><a href="#"><span class="fa fa-user" style="font-size:2em;" title="My Account"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <footer class="custom-footer add-padding">
+
+            <div class="add-padding">
+                <div class="media-container-row align-center label-footer">
+                    <div class="row row-links">
+                        <ul class="foot-menu">
+                            <li>@Html.ActionLink("About Us", "", "", new { @class = "label-footer " })</li>
+                            <li>@Html.ActionLink("Contact Us", "", "", new { @class = "label-footer " })</li>
+                            <li>@Html.ActionLink("Careers", "", "", new { @class = "label-footer " })</li>
+                            <li>@Html.ActionLink("Privacy Policy", "", "", new { @class = "label-footer " })</li>
+                            <li>@Html.ActionLink("Terms of Use", "", "", new { @class = "label-footer " })</li>
+                            <li>@Html.ActionLink("Press", "", "", new { @class = "label-footer " })</li>
+
+                        </ul>
+                        <ul class="social-list">
+                            <li class="soc-item"><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter fa-lg" style="color: #ffffff;"></i></a></li>
+                            <li class="soc-item"><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook-f fa-lg" style="color: #ffffff;"></i></a></li>
+                            <li class="soc-item"><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram fa-lg" style="color: #ffffff;"></i></a></li>
+                            <li class="soc-item"><a href="//www.youtube.com/channel/UCeFzTMpr7ik6oU5MT_YAYzg" target="_blank"><i class="fa fa-youtube fa-lg" style="color: #ffffff;"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="row row-copirayt">
+                        <p class="label-footer">
+                            HIDIVE and the logos &trade; and &copy; HIDIVE, LLC.
+                        </p>
+                        @*<p class="label-footer align-center">
+                                © Copyright @DateTime.Now.Year Hanh Nguyen
+                            </p>*@
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+
+    </div>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

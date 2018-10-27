@@ -1,0 +1,118 @@
+﻿@model List<JSONparse.Titlerow>
+
+@{
+    ViewBag.Title = "HIDIVE - Stream DUBCAST℠, Exclusive Anime & More!";
+}
+
+
+<!--Banner Slider-->
+<div class="banner-slider">
+    <div class="">
+        <a href="https://www.hidive.com/tv/hozukis-coolheadedness-2">
+            <img src="//d10xkldqejj5hr.cloudfront.net/slides/2018/10/HIDIVE_HOMEcarousel_FreeEPisode_HalloweenTheme_Hozuki21250x500.gif" class="img-responsive" />
+        </a>
+    </div>
+    <div class="">
+        <a href="https://www.hidive.com/tv/hozukis-coolheadedness-2">
+            <img src="//d10xkldqejj5hr.cloudfront.net/slides/2018/10/HIDIVE_HOMEcarousel_Haloween_20off_3.gif" class="img-responsive" />
+        </a>
+    </div>
+    <div class="">
+        <a href="https://www.hidive.com/signup">
+            <img src="//d10xkldqejj5hr.cloudfront.net/slides/2018/08/HIDIVE_HOMEcarousel_FreeeeAnime_1250x500.gif" class="img-responsive" />
+        </a>
+    </div>
+</div>
+<div class="add-padding">
+    @{
+
+        foreach (JSONparse.Titlerow tr in Model)
+        {
+            var count = 0;
+            <h1>
+                @if (tr.Name.ToUpper() == "CONTINUE WATCHING")
+                {
+                    <span class="fa fa-clock-o"></span>
+                }
+                else if (tr.Name.ToUpper() == "MY QUEUE")
+                {
+                    <span class="fa fa-forward"></span>
+                }
+                else
+                {
+                }
+                @Html.DisplayFor(model => tr.Name)
+                @if (tr.Titles.Count() > 15)
+                {
+                    <small class="hidden-xs" style="font-size:12px;">&nbsp;<a href="#" data-toggle="tooltip" title="" data-original-title="View All">View All (@tr.Titles.Count())</a></small>
+                    <small class="visible-xs" style="font-size:18px;">&nbsp;<a href="#" data-toggle="tooltip" title="" data-original-title="View All"><i class="fa fa-sign-out"></i> (@tr.Titles.Count())</a></small>
+                }
+            </h1>
+
+            <div class="title-slider">
+                @foreach (JSONparse.Title t in tr.Titles)
+                {
+                    <div class="slider-item">
+                        <div class="image">
+                            <img src="@t.MasterArtUrl" class="img-responsive" id="myImg" alt="@t.Name" />
+                        </div>
+                        <div class="overlay">
+                            <a href="#" class="icon" title="@t.Name">
+                                <span style="font-size:3em;line-height:1em;" class="glyphicon glyphicon-play-circle"></span>
+                            </a>
+                            <h3>@t.Name</h3>
+                            @*<button type="button" class="btn btn-primary icon-info" data-toggle="modal" data-target="#myModal" id="btn-modal"><i class="fa fa-info"></i> Quick View</button>*@
+
+                        </div>
+                        <!-- The Modal -->
+                        <div id="myModal" class="modal">
+                            <span class="close">&times;</span>
+                            <img class="modal-content" id="img01" src="@t.KeyArtUrl">
+                            <div id="caption"></div>
+                        </div>
+                    </div>
+                    
+                    count = count + 1;
+
+                    if (count > 14)
+                    {
+                        break;
+                    }
+                }
+            </div>
+        }
+    }
+
+    @*for PartialView usage
+        <div id="continue">
+            <h1>
+                <span class="fa fa-clock-o"></span>
+                Continue Watching
+            </h1>
+
+        </div>*@
+</div>
+
+@section Scripts{
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    <!--Slick slider-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.banner-slider').slick({
+                autoplay: true,
+                dots: true,
+            });
+            $('.title-slider').slick({
+                slidesToShow: 5,
+                slidesToScroll: 5,
+                dots: true
+                //responsive
+            });
+        });
+
+    </script>
+
+}

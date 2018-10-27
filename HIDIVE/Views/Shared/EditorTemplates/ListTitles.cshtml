@@ -1,0 +1,196 @@
+﻿@model List<JSONparse.Title>
+
+<div class="slick-slider">
+    @foreach (JSONparse.Title t in Model)
+    {
+        <div>
+            <img src="@t.MasterArtUrl" />
+        </div>
+        <div class="">
+
+        </div>
+
+    }
+
+</div>
+
+
+
+@*<div>
+        <h4>Title</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ShortSynopsis)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ShortSynopsis)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MediumSynopsis)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MediumSynopsis)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LongSynopsis)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LongSynopsis)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.KeyArtUrl)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.KeyArtUrl)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MasterArtUrl)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MasterArtUrl)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Rating)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Rating)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.OverallRating)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.OverallRating)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UserRating)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserRating)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RunTime)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RunTime)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ShowInfoTitle)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ShowInfoTitle)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstPremiereDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FirstPremiereDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EpisodeCount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EpisodeCount)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SeasonName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SeasonName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RokuHDArtUrl)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RokuHDArtUrl)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RokuSDArtUrl)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RokuSDArtUrl)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsRateable)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsRateable)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.InQueue)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.InQueue)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsFavorite)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsFavorite)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsContinueWatching)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsContinueWatching)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LoadTime)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LoadTime)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@
