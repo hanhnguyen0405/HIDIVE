@@ -1,7 +1,8 @@
-﻿@model List<JSONparse.Title>
+﻿
+@model List<CommonModels.Title>
 
 <div class="slick-slider">
-    @foreach (JSONparse.Title t in Model)
+    @foreach (CommonModels.Title t in Model)
     {
         <div>
             <img src="@t.MasterArtUrl" />

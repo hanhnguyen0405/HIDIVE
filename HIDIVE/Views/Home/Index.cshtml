@@ -1,4 +1,4 @@
-﻿@model List<JSONparse.Titlerow>
+﻿@model List<CommonModels.TitleRow>
 
 @{
     ViewBag.Title = "HIDIVE - Stream DUBCAST℠, Exclusive Anime & More!";
@@ -26,7 +26,7 @@
 <div class="add-padding">
     @{
 
-        foreach (JSONparse.Titlerow tr in Model)
+        foreach (CommonModels.TitleRow tr in Model)
         {
             var count = 0;
             <h1>
@@ -44,25 +44,33 @@
                 @Html.DisplayFor(model => tr.Name)
                 @if (tr.Titles.Count() > 15)
                 {
-                    <small class="hidden-xs" style="font-size:12px;">&nbsp;<a href="#" data-toggle="tooltip" title="" data-original-title="View All">View All (@tr.Titles.Count())</a></small>
-                    <small class="visible-xs" style="font-size:18px;">&nbsp;<a href="#" data-toggle="tooltip" title="" data-original-title="View All"><i class="fa fa-sign-out"></i> (@tr.Titles.Count())</a></small>
+                    <small class="hidden-xs" style="font-size:12px;">&nbsp;<a href="#" title="View All">View All (@tr.Titles.Count())</a></small>
+                    <small class="visible-xs" style="font-size:12px;">&nbsp;<a href="#" title="View All">View All <i class="fa fa-sign-out"></i></a></small>
                 }
             </h1>
 
             <div class="title-slider">
-                @foreach (JSONparse.Title t in tr.Titles)
+
+                @foreach (CommonModels.Title t in tr.Titles)
                 {
                     <div class="slider-item">
-                        <div class="image">
-                            <img src="@t.MasterArtUrl" class="img-responsive" id="myImg" alt="@t.Name" />
+                        <div class="image" id="@t.Id" data-title="@tr.Name">
+                            <img src="@t.MasterArtUrl" class="img-responsive" alt="@t.Name" />
                         </div>
-                        <div class="overlay">
+                        <div class="overlay" id="@t.Id" data-title="@tr.Name">
                             <a href="#" class="icon" title="@t.Name">
                                 <span style="font-size:3em;line-height:1em;" class="glyphicon glyphicon-play-circle"></span>
                             </a>
-                            <h3>@t.Name</h3>
-                            @*<button type="button" class="btn btn-primary icon-info" data-toggle="modal" data-target="#myModal" id="btn-modal"><i class="fa fa-info"></i> Quick View</button>*@
-
+                            <h3 class="visible-lg ">@t.Name</h3>
+                            <h3 class="visible-md" style="overflow:hidden; white-space:nowrap; text-overflow: ellipsis;">@t.Name</h3>
+                            <div class="visible-lg visible-md">
+                                <a class="icon-down" title="More Info" id="showContent" onclick="showTab('@tr.Name',@t.Id)">
+                                    <span class="glyphicon glyphicon-menu-down"></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="small-title-info visible-sm visible-xs" style="color: rgba(0,174,240,1); overflow:hidden; white-space:nowrap; text-overflow: ellipsis;">
+                            <span class="glyphicon glyphicon-info-sign"></span> @t.Name
                         </div>
                         <!-- The Modal -->
                         <div id="myModal" class="modal">
@@ -71,7 +79,7 @@
                             <div id="caption"></div>
                         </div>
                     </div>
-                    
+
                     count = count + 1;
 
                     if (count > 14)
@@ -80,6 +88,30 @@
                     }
                 }
             </div>
+            <!--Test-->
+            foreach (CommonModels.Title t in tr.Titles)
+            {
+                <section class="content hide" id="@t.Id" data-title="@tr.Name">
+                    <div style="text-align:right">
+                        <span class="close-btn fa fa-times" onclick="hideTab('@tr.Name',@t.Id)"></span>
+                    </div>
+                    <div class="content-table">
+                        <div class="content-title">
+                            <h1>@t.Name</h1>
+                            <h4>@t.ShowInfoTitle</h4>
+                            <p class="hidden-xs">@t.MediumSynopsis</p>
+                            <ul>
+                                <li>Original Premier: @t.FirstPremiereDate</li>
+                                <li>Versions: @t.Rating</li>
+                            </ul>
+                        </div>
+                        <div class="content-img">
+                            <img src="@t.KeyArtUrl" class="img-responsive"/>
+                        </div>
+                    </div>
+                </section>
+            }
+
         }
     }
 
@@ -100,6 +132,34 @@
     <!--Slick slider-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"></script>
     <script type="text/javascript">
+        function resetSection() {
+            //reset all section and frames
+            $("section").addClass("hide");
+            $(".overlay").removeClass("hide");
+            $(".small-title-info").removeClass("hide");
+            $(".image").css('border', 'none');
+        }
+
+        function showTab(name, id) {
+            resetSection();
+            //add new section
+            $("section#"+id+".content[data-title='"+name+"']").removeClass("hide");
+            $("div#" + id + ".overlay[data-title='" + name + "']").addClass("hide");
+            $("div#" + id + ".small-title-info[data-title='" + name + "']").addClass("hide");
+            //add frame
+            $("div#" + id + ".image[data-title='" + name + "']").css({ 'border': '3px solid rgba(0,174,240,1)', 'opacity':'1'});
+            //$("div#" + id + ".image[data-title='" + name + "']").addClass("arrow-down");
+        };
+
+        //hide tab
+        function hideTab(name,id) {
+            $("section#" + id + ".content[data-title='" + name + "']").addClass("hide");
+            $("div#" + id + ".overlay[data-title='" + name + "']").removeClass("hide");
+            $("div#" + id + ".small-title-info[data-title='" + name + "']").removeClass("hide");
+            //remove frame
+            $(".image").css('border', 'none');
+        }
+
         $(document).ready(function () {
             $('.banner-slider').slick({
                 autoplay: true,
@@ -108,11 +168,34 @@
             $('.title-slider').slick({
                 slidesToShow: 5,
                 slidesToScroll: 5,
-                dots: true
+                dots: true,
                 //responsive
             });
+           
+            $('.title-slider').on("afterChange", function () {
+                resetSection();
+            });
+
+            $('.slider-item').change(function () {
+                $(".content").remove();
+            });
+
+            //--Load title lists--
+            $('#continue').slick();
+            $.ajax({
+                url: "@Url.Action("ListTitles","Home")",
+                type: "GET",
+                success: function (result) {
+                    $("#continue").after(result);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.responseText);
+                }
+            });
+            
         });
 
+        
     </script>
 
 }

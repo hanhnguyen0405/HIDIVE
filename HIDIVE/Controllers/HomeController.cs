@@ -1,4 +1,4 @@
-﻿using JSONparse;
+﻿using BLL;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -6,26 +6,17 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CommonModels;
 
 namespace HIDIVE.Controllers
 {
     public class HomeController : Controller
     {
+        BLL_TitleRow _bll_TitleRow = new BLL_TitleRow();
         public ActionResult Index()
         {
-            List<Titlerow> titleRows = new List<Titlerow>();
             string path = Server.MapPath("~/App_Data/dashboard.json");
-            using (StreamReader rd = new StreamReader(path))
-            {
-                string jsonRaw = rd.ReadToEnd();
-                Rootobject rootObjects = JsonConvert.DeserializeObject<Rootobject>(jsonRaw);
-                Data data = rootObjects.Data;
-                titleRows = data.TitleRows.ToList();
-                //foreach (Titlerow tr in data.TitleRows)
-                //{
-                //    List<Title> titles = tr.Titles.ToList();
-                //}
-            }
+            List<TitleRow> titleRows = _bll_TitleRow.GetTitleRows(path);
             return View(titleRows);
         }
         
@@ -34,16 +25,11 @@ namespace HIDIVE.Controllers
         [HttpGet]
         public ActionResult ListTitles()
         {
-            List<Title> titles = new List<Title>();
             string path = Server.MapPath("~/App_Data/dashboard.json");
-            using (StreamReader rd = new StreamReader(path))
-            {
-                string jsonRaw = rd.ReadToEnd();
-                Rootobject rootObjects = JsonConvert.DeserializeObject<Rootobject>(jsonRaw);
-                Data data = rootObjects.Data;
-                Titlerow titleRow = data.TitleRows.ToList().Where(x=>x.Name=="Continue Watching").FirstOrDefault();
-                titles = titleRow.Titles.ToList();
-            }
+            List<TitleRow> titleRows = _bll_TitleRow.GetTitleRows(path);
+            TitleRow titleRow = titleRows.ToList().Where(x => x.Name == "Continue Watching").FirstOrDefault();
+            List<Title> titles = titleRow.Titles.ToList();
+          
             ViewData.TemplateInfo.HtmlFieldPrefix = $"Title";
             return PartialView("EditorTemplates/ListTitles", titles);
         }

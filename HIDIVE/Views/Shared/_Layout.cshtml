@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" />
     <!-- Custom Theme Style -->
     <link href="~/Content/Site.css" rel="stylesheet" />
+    @*<link href="~/Content/Test.css" rel="stylesheet" />*@
+
     @*@Styles.Render("~/Content/css")*@
 
     @RenderSection("css", required: false)
@@ -37,7 +39,7 @@
                         </div>
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
-                                <li>@Html.ActionLink("Simulcasts", "Index2", "Home")</li>
+                                <li>@Html.ActionLink("Simulcasts", "", "")</li>
                                 <li>@Html.ActionLink("Dubs", "", "")</li>
                                 <li>@Html.ActionLink("Series", "", "")</li>
                                 <li>@Html.ActionLink("Movies", "", "")</li>
@@ -85,7 +87,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Simulcasts", "Index2", "Home")</li>
+                        <li>@Html.ActionLink("Simulcasts", "", "")</li>
                         <li>@Html.ActionLink("Dubs", "", "")</li>
                         <li>@Html.ActionLink("Series", "", "")</li>
                         <li>@Html.ActionLink("Movies", "", "")</li>
@@ -105,7 +107,7 @@
         @RenderBody()
         <footer class="custom-footer add-padding">
 
-            <div class="add-padding">
+            <div>
                 <div class="media-container-row align-center label-footer">
                     <div class="row row-links">
                         <ul class="foot-menu">
@@ -118,10 +120,10 @@
 
                         </ul>
                         <ul class="social-list">
-                            <li class="soc-item"><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter fa-lg" style="color: #ffffff;"></i></a></li>
-                            <li class="soc-item"><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook-f fa-lg" style="color: #ffffff;"></i></a></li>
-                            <li class="soc-item"><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram fa-lg" style="color: #ffffff;"></i></a></li>
-                            <li class="soc-item"><a href="//www.youtube.com/channel/UCeFzTMpr7ik6oU5MT_YAYzg" target="_blank"><i class="fa fa-youtube fa-lg" style="color: #ffffff;"></i></a></li>
+                            <li class="soc-item"><a href="https://twitter.com/HIDIVEofficial" target="_blank"><i class="fa fa-twitter fa-lg" style="color: #ffffff;"></i></a></li>
+                            <li class="soc-item"><a href="https://www.facebook.com/HIDIVEofficial" target="_blank"><i class="fa fa-facebook-f fa-lg" style="color: #ffffff;"></i></a></li>
+                            <li class="soc-item"><a href="https://www.instagram.com/HIDIVEofficial/" target="_blank"><i class="fa fa-instagram fa-lg" style="color: #ffffff;"></i></a></li>
+                            <li class="soc-item"><a href="https://www.youtube.com/channel/UCeFzTMpr7ik6oU5MT_YAYzg" target="_blank"><i class="fa fa-youtube fa-lg" style="color: #ffffff;"></i></a></li>
                         </ul>
                     </div>
 

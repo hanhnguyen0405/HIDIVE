@@ -88,7 +88,7 @@ input, select, textarea {
 /* Arrows */
 .slick-prev, .slick-next {
     top: 50%;
-    margin-top: -10px;
+    /*margin-top: -10px;*/
 }
 
 .slick-prev {
@@ -189,7 +189,24 @@ input, select, textarea {
     display: block;
     width: 100%;
     height: auto;
+
+    
+    /*position: relative;
+    border:none;
+    box-sizing:border-box;*/
 }
+
+/*.image:after {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    border-color: rgba(76, 255, 0, 0);
+    border-top-color: rgba(0,174,240,1);
+    top:100%;
+    left: 50%;
+    margin-left: -25px;
+    content: "";
+}*/
 
 .overlay {
     position: absolute;
@@ -201,6 +218,7 @@ input, select, textarea {
     width: 100%;
     opacity: 0;
     transition: .3s ease;
+    text-align:center;
 }
 
 .slider-item:hover .overlay {
@@ -214,26 +232,51 @@ input, select, textarea {
 .icon {
     color: white;
     position: absolute;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, 20%);
+    -webkit-transform: translate(-50%, 20%);
+    -moz-transform: translate(-50%, 20%);
+    -ms-transform: translate(-50%, 20%);
+    -o-transform: translate(-50%, 20%);
     text-align: center;
 }
 
-.icon-info {
+@media(max-width:600px){
+    .icon{
+        font-size:0.7em;
+    }
+}
+
+.icon-down {
     color: white;
-    font-size:1em;
     position: absolute;
-    bottom: 8px;
-    right: 16px;
-    font-size: 18px;
+    bottom: -4px;
+    padding: 0px 0px 10px 0px;
+    font-size: 24px;
+    transform: translate(-50%);
+    -webkit-transform: translate(-50%);
+    -moz-transform: translate(-50%);
+    -ms-transform: translate(-50%);
+    -o-transform: translate(-50%);
 }
 
 .glyphicon-play-circle:hover {
     color: rgba(0,174,240,1);
 }
 
+.slider-item:hover .icon-down {
+    opacity: 1;
+    transition: bottom 0.5s ease;
+    bottom: -14px;
+}
+
+.title-slider .icon-down span {
+    transform: scale(2,1);
+    -webkit-transform: scale(2,1);
+    -moz-transform: scale(2,1);
+    -ms-transform: scale(2,1);
+    -o-transform: scale(2,1);
+}
 
 /* Change slider items, dots and arrows*/
 .title-slider .slick-list {
@@ -265,7 +308,11 @@ input, select, textarea {
 }
 
 .title-slider .slider-item .overlay h3 {
-    margin: 0px auto 3px auto;
+    transform: translateY(120%);
+    -webkit-transform: translateY(120%);
+    -moz-transform: translateY(120%);
+    -ms-transform: translateY(120%);
+    -o-transform: translateY(120%);
     padding: 0px;
     font-size: 14px;
     text-align: center;
@@ -278,43 +325,8 @@ input, select, textarea {
     color: white !important;
 }
 
-.title-slider .hitbox .synopsis p {
-    margin: 0px auto;
-    padding: 0px;
-    font-size: 14px;
-    text-align: left;
-    width: 100%;
-    line-height: 1em;
-    height: 3.1em;
-    overflow: hidden;
-}
-
-.title-slider .hitbox .expander {
-    opacity: 0;
-    cursor: pointer;
-    position: absolute;
-    bottom: -4px;
-    left: 0px;
-    width: 100%;
-    padding: 0px 0px 10px 0px;
-    font-size: 24px;
-}
-
-.title-slider .hitbox:hover .expander {
-    transition: bottom 0.5s ease;
-    bottom: -14px;
-}
-
-.title-slider .hitbox .expander span {
-    transform: scale(2,1);
-    -webkit-transform: scale(2,1);
-    -moz-transform: scale(2,1);
-    -ms-transform: scale(2,1);
-    -o-transform: scale(2,1);
-}
-
 .title-slider .slick-track {
-    padding-bottom: 20px;
+    padding-bottom: 0px;
 }
 
 .title-slider .slick-prev {
@@ -380,8 +392,12 @@ input, select, textarea {
 .slick-dots li.slick-active button:before {
     color: rgba(0,174,240,1) !important;
 }
+
+.slick-dotted.slick-slider {
+    margin-bottom: 0px !important;
+}
 /*------------------------heading-----------------------*/
-h1, h2,h3 {
+h1, h2, h3 {
     text-transform: uppercase;
     font-weight: 500;
     color: rgba(150,150,150,1);
@@ -392,100 +408,80 @@ h1, h2,h3 {
 h1{
     font-size: 24px;
 }
-/*-----------------------style modal---------------------------*/
-#myImg {
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
 
-    #myImg:hover {
-        opacity: 0.7;
-    }
-
-/* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-}
-
-/* Modal Content (image) */
-.modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-}
-
-/* Caption of Modal Image */
-#caption {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-    text-align: center;
-    color: #ccc;
-    padding: 10px 0;
-    height: 150px;
-}
-
-/* Add Animation */
-.modal-content, #caption {
-    -webkit-animation-name: zoom;
-    -webkit-animation-duration: 0.6s;
-    animation-name: zoom;
-    animation-duration: 0.6s;
-}
-
-@-webkit-keyframes zoom {
-    from {
-        -webkit-transform: scale(0)
-    }
-
-    to {
-        -webkit-transform: scale(1)
-    }
-}
-
-@keyframes zoom {
-    from {
-        transform: scale(0)
-    }
-
-    to {
-        transform: scale(1)
-    }
-}
-/* The Close Button */
-.close {
+/*------------------------------Content-tab--------------------------*/
+/*.title-slider .arrow-down {
+    top: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
     position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
+    pointer-events: none;
+}
+.title-slider .arrow-down {
+    transition: border-top-color 0.5s ease;
+    border-top-color: rgba(0,174,240,1);
+    font-size:24px;
+}*/
+.arrow-down {
+    top:100%;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #f00;
 }
 
-.close:hover,
-.close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
+.content{
+    background-color: black;
+}
+
+.close-btn{
+    padding:0 10px;
+    color:white;
+    font-size:24px;
+}
+
+.content-table {
+    width:100%;
+    display: table;
+    padding-bottom:30px;
+}
+.content-title {
+    width: 400px;
+    position: absolute;
+    height: 400px;
+    z-index: 15;
+    vertical-align: top;
+    color: white;
+    padding-right: 0px;
+    padding-left: 20px;
+    display: table-cell;
+}
+
+.content-title h1 {
+    color: rgba(0,174,240,1);
+}
+
+.content-img {
+    width: 65%;
+    text-align: center;
+    background-size: auto 400px;
+    background-repeat: no-repeat;
+    background-position: right top;
+    position: relative;
+    display: table-cell;
 }
 
 /*------------------------------footer--------------------------*/
 .label-footer {
-    color: #ffffff;
+color: #ffffff;
+}
+
+.custom-footer{
+    padding-top:20px;
 }
 
 .custom-footer .row-links {
